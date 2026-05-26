@@ -1,0 +1,38 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "E1cAkGUoKWoLYKOqSIggF"
+uri = "file://screenshots/atheniq-admin-dashboard.jpg"
+type = "image"
+title = "1. Admin Dashboard"
+
+[[outputs]]
+id = "LXyqoGVuQyWe673a8ZJh7"
+uri = "file://screenshots/atheniq-student-profile.jpg"
+type = "image"
+title = "2. Student Profile"
+
+[[outputs]]
+id = "CEQ78fRKkvmRbUOloCKqU"
+uri = "file://screenshots/atheniq-attendance-tracker.jpg"
+type = "image"
+title = "3. Attendance Tracker"
+
+[[outputs]]
+id = "f5Rgmd7rIenxbLxNny0SD"
+uri = "file://screenshots/atheniq-class-schedule.jpg"
+type = "image"
+title = "4. Class Schedule"
+
+[[outputs]]
+id = "v-qsNGAx3u4ihhSgk_xXD"
+uri = "file://screenshots/atheniq-gradebook.jpg"
+type = "image"
+title = "5. Gradebook"
+
+[[outputs]]
+id = "Eqj-nlqNp19-8iWfK5sWv"
+uri = "file://screenshots/atheniq-notifications.jpg"
+type = "image"
+title = "6. Notifications & Messages"
