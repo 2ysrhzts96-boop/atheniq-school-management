@@ -71,24 +71,24 @@ export function Notifications() {
       <div className="flex flex-col lg:flex-row gap-6 h-[calc(100vh-140px)]">
         
         {/* Left Panel: List */}
-        <Card className="w-full lg:w-[400px] flex-shrink-0 border-slate-200 shadow-sm flex flex-col bg-white overflow-hidden">
-          <div className="p-4 border-b border-slate-100 space-y-4 bg-slate-50/50">
+        <Card className="w-full lg:w-[400px] flex-shrink-0 border-[#ede9fe] shadow-sm flex flex-col bg-white overflow-hidden">
+          <div className="p-4 border-b border-[#ede9fe] space-y-4 bg-white">
             <div className="flex justify-between items-center">
               <h2 className="font-semibold text-slate-800">Inbox</h2>
-              <Button className="bg-[#1e2a4a] hover:bg-[#1e2a4a]/90 text-white h-8 px-3 text-xs">
+              <Button className="bg-[#7c3aed] hover:bg-[#6d28d9] text-white h-8 px-3 text-xs">
                 <Edit className="h-3 w-3 mr-2" /> Compose
               </Button>
             </div>
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
-              <Input placeholder="Search messages..." className="h-9 pl-9 bg-white" />
+              <Input placeholder="Search messages..." className="h-9 pl-9 bg-white focus-visible:ring-[#7c3aed]" />
             </div>
             <Tabs defaultValue="all" className="w-full">
-              <TabsList className="grid grid-cols-4 bg-slate-100/50 p-1">
-                <TabsTrigger value="all" className="text-xs">All</TabsTrigger>
-                <TabsTrigger value="messages" className="text-xs">Direct</TabsTrigger>
-                <TabsTrigger value="alerts" className="text-xs">Alerts</TabsTrigger>
-                <TabsTrigger value="archived" className="text-xs">Archive</TabsTrigger>
+              <TabsList className="grid grid-cols-4 bg-[#f5f3ff] p-1">
+                <TabsTrigger value="all" className="text-xs data-[state=active]:text-[#7c3aed]">All</TabsTrigger>
+                <TabsTrigger value="messages" className="text-xs data-[state=active]:text-[#7c3aed]">Direct</TabsTrigger>
+                <TabsTrigger value="alerts" className="text-xs data-[state=active]:text-[#7c3aed]">Alerts</TabsTrigger>
+                <TabsTrigger value="archived" className="text-xs data-[state=active]:text-[#7c3aed]">Archive</TabsTrigger>
               </TabsList>
             </Tabs>
           </div>
@@ -98,16 +98,16 @@ export function Notifications() {
               {messages.map((msg) => (
                 <div 
                   key={msg.id} 
-                  className={`p-4 cursor-pointer hover:bg-slate-50 transition-colors relative ${msg.id === 1 ? 'bg-blue-50/30' : ''}`}
+                  className={`p-4 cursor-pointer hover:bg-slate-50 transition-colors relative ${msg.id === 1 ? 'bg-[#7c3aed]/5' : ''}`}
                 >
                   {msg.isUnread && (
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#0d9488]"></div>
+                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#7c3aed]"></div>
                   )}
                   <div className="flex gap-3">
                     <Avatar className="h-10 w-10 shrink-0">
                       <AvatarFallback className={`text-xs font-semibold text-white ${
-                        msg.type === 'alert' ? 'bg-amber-500' : 
-                        msg.type === 'announcement' ? 'bg-[#1e2a4a]' : 'bg-[#0d9488]'
+                        msg.type === 'alert' ? 'bg-[#f59e0b]' : 
+                        msg.type === 'announcement' ? 'bg-[#12082e]' : 'bg-[#7c3aed]'
                       }`}>
                         {msg.avatar}
                       </AvatarFallback>
@@ -134,29 +134,29 @@ export function Notifications() {
         </Card>
 
         {/* Right Panel: View */}
-        <Card className="flex-1 border-slate-200 shadow-sm flex flex-col bg-white overflow-hidden hidden lg:flex">
-          <div className="h-16 border-b border-slate-100 flex items-center justify-between px-6 shrink-0 bg-slate-50/50">
+        <Card className="flex-1 border-[#ede9fe] shadow-sm flex flex-col bg-white overflow-hidden hidden lg:flex">
+          <div className="h-16 border-b border-[#ede9fe] flex items-center justify-between px-6 shrink-0 bg-white">
             <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon" className="text-slate-500 hover:text-slate-800"><Archive size={18} /></Button>
-              <Button variant="ghost" size="icon" className="text-slate-500 hover:text-slate-800"><Star size={18} /></Button>
+              <Button variant="ghost" size="icon" className="text-[#7c3aed] hover:text-[#6d28d9] hover:bg-[#f5f3ff]"><Archive size={18} /></Button>
+              <Button variant="ghost" size="icon" className="text-[#f59e0b] hover:text-[#d97706] hover:bg-[#f5f3ff]"><Star size={18} /></Button>
             </div>
             <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon" className="text-slate-500 hover:text-slate-800"><Reply size={18} /></Button>
-              <Button variant="ghost" size="icon" className="text-slate-500 hover:text-slate-800"><MoreHorizontal size={18} /></Button>
+              <Button variant="ghost" size="icon" className="text-[#7c3aed] hover:text-[#6d28d9] hover:bg-[#f5f3ff]"><Reply size={18} /></Button>
+              <Button variant="ghost" size="icon" className="text-[#7c3aed] hover:text-[#6d28d9] hover:bg-[#f5f3ff]"><MoreHorizontal size={18} /></Button>
             </div>
           </div>
 
           <div className="flex-1 overflow-y-auto p-8">
             <div className="max-w-3xl mx-auto">
               <div className="flex items-center gap-2 mb-6">
-                <Badge className="bg-[#1e2a4a] text-white hover:bg-[#1e2a4a]">Announcement</Badge>
+                <Badge className="bg-[#12082e] text-white hover:bg-[#12082e]">Announcement</Badge>
                 <h2 className="text-2xl font-bold text-slate-800 ml-2">Updated Policy for Final Exams</h2>
               </div>
 
               <div className="flex items-center justify-between mb-8 pb-6 border-b border-slate-100">
                 <div className="flex items-center gap-4">
                   <Avatar className="h-12 w-12">
-                    <AvatarFallback className="bg-[#1e2a4a] text-white font-semibold">PJ</AvatarFallback>
+                    <AvatarFallback className="bg-[#12082e] text-white font-semibold">PJ</AvatarFallback>
                   </Avatar>
                   <div>
                     <div className="font-semibold text-slate-800">Principal Jenkins</div>
@@ -182,7 +182,7 @@ export function Notifications() {
                 </div>
 
                 <p>We will discuss this in more detail during Wednesday's faculty meeting. Please come prepared with any questions.</p>
-                <p>Best regards,<br/>Dr. Sarah Jenkins<br/>Principal, EduManage Pro Academy</p>
+                <p>Best regards,<br/>Dr. Sarah Jenkins<br/>Principal, Atheniq Academy</p>
               </div>
 
               <div className="mt-12 pt-6 border-t border-slate-100">
@@ -195,20 +195,20 @@ export function Notifications() {
                     <div className="font-medium text-sm text-slate-800">Final_Exam_Policy_v2.pdf</div>
                     <div className="text-xs text-slate-500">2.4 MB</div>
                   </div>
-                  <Download className="ml-4 h-4 w-4 text-slate-400" />
+                  <Download className="ml-4 h-4 w-4 text-[#7c3aed]" />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="p-4 border-t border-slate-100 bg-slate-50/50">
+          <div className="p-4 border-t border-[#ede9fe] bg-white">
             <div className="max-w-3xl mx-auto flex gap-3">
               <Avatar className="h-10 w-10 shrink-0">
                 <AvatarFallback className="bg-slate-200">ME</AvatarFallback>
               </Avatar>
               <div className="flex-1 relative">
-                <Input placeholder="Reply to Principal Jenkins..." className="pr-12 bg-white" />
-                <Button size="icon" variant="ghost" className="absolute right-1 top-1 h-8 w-8 text-[#0d9488]">
+                <Input placeholder="Reply to Principal Jenkins..." className="pr-12 bg-white focus-visible:ring-[#7c3aed]" />
+                <Button size="icon" variant="ghost" className="absolute right-1 top-1 h-8 w-8 text-[#7c3aed]">
                   <Reply size={16} />
                 </Button>
               </div>

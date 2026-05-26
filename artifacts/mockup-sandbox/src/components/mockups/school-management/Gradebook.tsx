@@ -20,19 +20,19 @@ const students = [
 ];
 
 const distributionData = [
-  { grade: 'A (90-100)', count: 4, color: '#10b981' },
-  { grade: 'B (80-89)', count: 4, color: '#3b82f6' },
+  { grade: 'A (90-100)', count: 4, color: '#059669' },
+  { grade: 'B (80-89)', count: 4, color: '#7c3aed' },
   { grade: 'C (70-79)', count: 2, color: '#f59e0b' },
-  { grade: 'D (60-69)', count: 0, color: '#f43f5e' },
-  { grade: 'F (<60)', count: 0, color: '#ef4444' },
+  { grade: 'D (60-69)', count: 0, color: '#dc2626' },
+  { grade: 'F (<60)', count: 0, color: '#dc2626' },
 ];
 
 export function Gradebook() {
   const getGradeColor = (score: number) => {
-    if (score >= 90) return "text-emerald-700 bg-emerald-50";
-    if (score >= 80) return "text-blue-700 bg-blue-50";
-    if (score >= 70) return "text-amber-700 bg-amber-50";
-    return "text-rose-700 bg-rose-50";
+    if (score >= 90) return "text-emerald-700 bg-emerald-100";
+    if (score >= 80) return "text-violet-700 bg-violet-100";
+    if (score >= 70) return "text-amber-700 bg-amber-100";
+    return "text-red-700 bg-red-100";
   };
 
   const getLetterGrade = (score: number) => {
@@ -79,12 +79,12 @@ export function Gradebook() {
         <div className="flex items-center gap-3">
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
-            <Input placeholder="Search student..." className="h-9 pl-9 w-[200px]" />
+            <Input placeholder="Search student..." className="h-9 pl-9 w-[200px] focus-visible:ring-[#7c3aed]" />
           </div>
-          <Button variant="outline" className="h-9 border-slate-200 text-slate-600">
+          <Button variant="outline" className="h-9 border-[#7c3aed] text-[#7c3aed]">
             <Printer className="mr-2 h-4 w-4" /> Print
           </Button>
-          <Button className="h-9 bg-[#1e2a4a] hover:bg-[#1e2a4a]/90 text-white">
+          <Button className="h-9 bg-[#7c3aed] hover:bg-[#6d28d9] text-white">
             <Download className="mr-2 h-4 w-4" /> Export CSV
           </Button>
         </div>
@@ -92,23 +92,23 @@ export function Gradebook() {
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Main Gradebook Table */}
-        <Card className="lg:col-span-3 border-slate-200 shadow-sm overflow-hidden bg-white">
-          <CardHeader className="py-4 border-b border-slate-100 flex flex-row items-center justify-between bg-slate-50/50">
+        <Card className="lg:col-span-3 border-[#ede9fe] shadow-sm overflow-hidden bg-white">
+          <CardHeader className="py-4 border-b border-[#ede9fe] flex flex-row items-center justify-between bg-white">
             <CardTitle className="text-lg font-semibold text-slate-800">Class Grades</CardTitle>
-            <Button variant="ghost" size="sm" className="text-slate-500 hover:text-slate-800">
+            <Button variant="ghost" size="sm" className="text-[#7c3aed] hover:text-[#6d28d9]">
               <Settings className="h-4 w-4 mr-2" /> Manage Columns
             </Button>
           </CardHeader>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 text-slate-600 border-b border-slate-200 uppercase text-xs">
+              <thead className="bg-[#f5f3ff] text-[#4c1d95] font-semibold border-b border-[#ede9fe] uppercase text-xs">
                 <tr>
-                  <th className="px-6 py-4 font-medium min-w-[200px] border-r border-slate-200">Student Name</th>
-                  <th className="px-4 py-4 font-medium text-center">Quiz 1 <br/><span className="text-[10px] text-slate-400 normal-case">(10%)</span></th>
-                  <th className="px-4 py-4 font-medium text-center">Midterm <br/><span className="text-[10px] text-slate-400 normal-case">(30%)</span></th>
-                  <th className="px-4 py-4 font-medium text-center">Project <br/><span className="text-[10px] text-slate-400 normal-case">(20%)</span></th>
-                  <th className="px-4 py-4 font-medium text-center border-r border-slate-200">Final Exam <br/><span className="text-[10px] text-slate-400 normal-case">(40%)</span></th>
-                  <th className="px-6 py-4 font-bold text-center bg-slate-100">Final Grade</th>
+                  <th className="px-6 py-4 min-w-[200px] border-r border-[#ede9fe]">Student Name</th>
+                  <th className="px-4 py-4 text-center">Quiz 1 <br/><span className="text-[10px] text-[#4c1d95]/70 normal-case">(10%)</span></th>
+                  <th className="px-4 py-4 text-center">Midterm <br/><span className="text-[10px] text-[#4c1d95]/70 normal-case">(30%)</span></th>
+                  <th className="px-4 py-4 text-center">Project <br/><span className="text-[10px] text-[#4c1d95]/70 normal-case">(20%)</span></th>
+                  <th className="px-4 py-4 text-center border-r border-[#ede9fe]">Final Exam <br/><span className="text-[10px] text-[#4c1d95]/70 normal-case">(40%)</span></th>
+                  <th className="px-6 py-4 font-bold text-center bg-[#ede9fe]/50">Final Grade</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -153,10 +153,10 @@ export function Gradebook() {
 
         {/* Sidebar Analytics */}
         <div className="space-y-6">
-          <Card className="border-slate-200 shadow-sm bg-white">
-            <CardHeader className="py-4 border-b border-slate-100">
+          <Card className="border-[#ede9fe] shadow-sm bg-white">
+            <CardHeader className="py-4 border-b border-[#ede9fe]">
               <CardTitle className="text-base font-semibold text-slate-800 flex items-center">
-                <BarChart3 className="mr-2 h-4 w-4 text-[#0d9488]" /> Grade Distribution
+                <BarChart3 className="mr-2 h-4 w-4 text-[#7c3aed]" /> Grade Distribution
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-6 pb-2 px-4">

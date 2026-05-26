@@ -39,10 +39,10 @@ export function AttendanceTracker() {
           </Select>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="text-slate-600 border-slate-200">
+          <Button variant="outline" className="text-[#7c3aed] border-[#7c3aed]">
             <Download className="mr-2 h-4 w-4" /> Export
           </Button>
-          <Button className="bg-[#0d9488] hover:bg-[#0d9488]/90 text-white">
+          <Button className="bg-[#7c3aed] hover:bg-[#6d28d9] text-white">
             Save Attendance
           </Button>
         </div>
@@ -53,29 +53,29 @@ export function AttendanceTracker() {
         <StatusCard title="Present" count="24" percent="80%" color="emerald" icon={<CheckCircle2 />} />
         <StatusCard title="Absent" count="2" percent="6.6%" color="rose" icon={<XCircle />} />
         <StatusCard title="Late" count="3" percent="10%" color="amber" icon={<Clock />} />
-        <StatusCard title="Excused" count="1" percent="3.3%" color="blue" icon={<FileWarning />} />
+        <StatusCard title="Excused" count="1" percent="3.3%" color="violet" icon={<FileWarning />} />
       </div>
 
       {/* Roster Table */}
-      <Card className="border-slate-200 shadow-sm">
-        <CardHeader className="py-4 border-b border-slate-100 flex flex-row items-center justify-between">
+      <Card className="border-[#ede9fe] shadow-sm">
+        <CardHeader className="py-4 border-b border-[#ede9fe] flex flex-row items-center justify-between">
           <CardTitle className="text-lg font-semibold text-slate-800">Class Roster (30 Students)</CardTitle>
           <div className="flex items-center gap-3">
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
-              <Input placeholder="Search student..." className="h-9 pl-9 w-[200px]" />
+              <Input placeholder="Search student..." className="h-9 pl-9 w-[200px] focus-visible:ring-[#7c3aed]" />
             </div>
-            <Button variant="outline" size="sm" className="h-9">Mark All Present</Button>
+            <Button variant="outline" size="sm" className="h-9 border-[#7c3aed] text-[#7c3aed]">Mark All Present</Button>
           </div>
         </CardHeader>
         <CardContent className="p-0">
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 text-slate-600 border-b border-slate-200">
+              <thead className="bg-[#f5f3ff] text-[#4c1d95] font-semibold border-b border-[#ede9fe]">
                 <tr>
-                  <th className="px-6 py-4 font-medium w-[300px]">Student Name</th>
-                  <th className="px-6 py-4 font-medium text-center">Status</th>
-                  <th className="px-6 py-4 font-medium">Notes</th>
+                  <th className="px-6 py-4 w-[300px]">Student Name</th>
+                  <th className="px-6 py-4 text-center">Status</th>
+                  <th className="px-6 py-4">Notes</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -84,7 +84,7 @@ export function AttendanceTracker() {
                     <td className="px-6 py-3">
                       <div className="flex items-center gap-3">
                         <Avatar className="h-8 w-8">
-                          <AvatarFallback className="bg-[#1e2a4a] text-white text-xs">
+                          <AvatarFallback className="bg-[#12082e] text-white text-xs">
                             {student.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
                         </Avatar>
@@ -96,14 +96,14 @@ export function AttendanceTracker() {
                         <StatusToggle active={student.status === 'present'} color="emerald" label="P" />
                         <StatusToggle active={student.status === 'absent'} color="rose" label="A" />
                         <StatusToggle active={student.status === 'late'} color="amber" label="L" />
-                        <StatusToggle active={student.status === 'excused'} color="blue" label="E" />
+                        <StatusToggle active={student.status === 'excused'} color="violet" label="E" />
                       </div>
                     </td>
                     <td className="px-6 py-3">
                       <Input 
                         defaultValue={student.note} 
                         placeholder="Add note..." 
-                        className="h-8 text-xs border-transparent hover:border-slate-200 focus:border-[#0d9488] bg-transparent hover:bg-white"
+                        className="h-8 text-xs border-transparent hover:border-[#ede9fe] focus:border-[#7c3aed] focus-visible:ring-1 focus-visible:ring-[#7c3aed] bg-transparent hover:bg-white"
                       />
                     </td>
                   </tr>
@@ -117,16 +117,16 @@ export function AttendanceTracker() {
   );
 }
 
-function StatusCard({ title, count, percent, color, icon }: { title: string, count: string, percent: string, color: 'emerald' | 'rose' | 'amber' | 'blue', icon: React.ReactNode }) {
+function StatusCard({ title, count, percent, color, icon }: { title: string, count: string, percent: string, color: 'emerald' | 'rose' | 'amber' | 'violet', icon: React.ReactNode }) {
   const colorStyles = {
     emerald: "bg-emerald-50 text-emerald-600 border-emerald-100",
     rose: "bg-rose-50 text-rose-600 border-rose-100",
     amber: "bg-amber-50 text-amber-600 border-amber-100",
-    blue: "bg-blue-50 text-blue-600 border-blue-100",
+    violet: "bg-violet-50 text-[#7c3aed] border-violet-100",
   };
 
   return (
-    <Card className="border-slate-200 shadow-sm overflow-hidden">
+    <Card className="border-[#ede9fe] shadow-sm overflow-hidden">
       <CardContent className="p-5 flex items-center justify-between">
         <div>
           <p className="text-sm font-medium text-slate-500 mb-1">{title}</p>
@@ -143,12 +143,12 @@ function StatusCard({ title, count, percent, color, icon }: { title: string, cou
   );
 }
 
-function StatusToggle({ active, color, label }: { active: boolean, color: 'emerald' | 'rose' | 'amber' | 'blue', label: string }) {
+function StatusToggle({ active, color, label }: { active: boolean, color: 'emerald' | 'rose' | 'amber' | 'violet', label: string }) {
   const activeStyles = {
     emerald: "bg-emerald-500 text-white border-emerald-600",
     rose: "bg-rose-500 text-white border-rose-600",
-    amber: "bg-amber-500 text-white border-amber-600",
-    blue: "bg-blue-500 text-white border-blue-600",
+    amber: "bg-[#f59e0b] text-white border-amber-600",
+    violet: "bg-[#7c3aed] text-white border-[#6d28d9]",
   };
   
   const inactiveStyles = "bg-white text-slate-400 border-slate-200 hover:border-slate-300 hover:bg-slate-50";

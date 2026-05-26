@@ -40,15 +40,15 @@ const classes = [
 ];
 
 const colorMap = {
-  blue: "bg-blue-100 text-blue-800 border-blue-200",
-  purple: "bg-purple-100 text-purple-800 border-purple-200",
+  blue: "bg-[#7c3aed]/15 text-[#4c1d95] border-[#7c3aed]/30 border-l-[#7c3aed] border-l-4",
+  purple: "bg-[#059669]/15 text-[#064e3b] border-[#059669]/30 border-l-[#059669] border-l-4",
   gray: "bg-slate-100 text-slate-600 border-slate-200 border-dashed",
-  amber: "bg-amber-100 text-amber-800 border-amber-200",
-  emerald: "bg-emerald-100 text-emerald-800 border-emerald-200",
-  teal: "bg-teal-100 text-teal-800 border-teal-200",
-  rose: "bg-rose-100 text-rose-800 border-rose-200",
-  indigo: "bg-indigo-100 text-indigo-800 border-indigo-200",
-  pink: "bg-pink-100 text-pink-800 border-pink-200",
+  amber: "bg-[#dc2626]/15 text-[#7f1d1d] border-[#dc2626]/30 border-l-[#dc2626] border-l-4",
+  emerald: "bg-[#f59e0b]/15 text-[#78350f] border-[#f59e0b]/30 border-l-[#f59e0b] border-l-4",
+  teal: "bg-[#0891b2]/15 text-[#164e63] border-[#0891b2]/30 border-l-[#0891b2] border-l-4",
+  rose: "bg-[#0891b2]/15 text-[#164e63] border-[#0891b2]/30 border-l-[#0891b2] border-l-4",
+  indigo: "bg-[#0891b2]/15 text-[#164e63] border-[#0891b2]/30 border-l-[#0891b2] border-l-4",
+  pink: "bg-[#0891b2]/15 text-[#164e63] border-[#0891b2]/30 border-l-[#0891b2] border-l-4",
 };
 
 export function ClassSchedule() {
@@ -56,19 +56,19 @@ export function ClassSchedule() {
     <AppLayout pageTitle="Class Schedule">
       {/* Header Controls */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
-        <div className="flex items-center gap-2 bg-white rounded-lg border border-slate-200 p-1 shadow-sm">
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-500 hover:text-slate-800">
+        <div className="flex items-center gap-2 bg-white rounded-lg border border-[#ede9fe] p-1 shadow-sm">
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-[#7c3aed] hover:text-[#6d28d9] hover:bg-[#f5f3ff]">
             <ChevronLeft size={18} />
           </Button>
           <div className="flex items-center gap-2 px-3 font-medium text-slate-700">
-            <CalendarIcon size={16} className="text-[#0d9488]" />
+            <CalendarIcon size={16} className="text-[#7c3aed]" />
             Oct 23 - Oct 27, 2023
           </div>
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-500 hover:text-slate-800">
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-[#7c3aed] hover:text-[#6d28d9] hover:bg-[#f5f3ff]">
             <ChevronRight size={18} />
           </Button>
-          <div className="w-px h-5 bg-slate-200 mx-1"></div>
-          <Button variant="ghost" size="sm" className="h-8 font-medium text-[#0d9488]">
+          <div className="w-px h-5 bg-[#ede9fe] mx-1"></div>
+          <Button variant="ghost" size="sm" className="h-8 font-medium text-[#7c3aed] hover:bg-[#f5f3ff]">
             Today
           </Button>
         </div>
@@ -88,14 +88,14 @@ export function ClassSchedule() {
         </div>
       </div>
 
-      <Card className="border-slate-200 shadow-sm overflow-hidden bg-white">
+      <Card className="border-[#ede9fe] shadow-sm overflow-hidden bg-white">
         <CardContent className="p-0">
-          <div className="grid grid-cols-6 border-b border-slate-200 bg-slate-50">
-            <div className="py-3 px-4 border-r border-slate-200 flex items-center justify-center">
-              <Clock size={16} className="text-slate-400" />
+          <div className="grid grid-cols-6 border-b border-[#ede9fe] bg-[#f5f3ff]">
+            <div className="py-3 px-4 border-r border-[#ede9fe] flex items-center justify-center">
+              <Clock size={16} className="text-[#7c3aed]" />
             </div>
             {days.map((day) => (
-              <div key={day} className="py-3 px-2 border-r border-slate-200 text-center font-semibold text-slate-700 last:border-r-0">
+              <div key={day} className="py-3 px-2 border-r border-[#ede9fe] text-center font-semibold text-[#4c1d95] last:border-r-0">
                 {day}
               </div>
             ))}
@@ -161,12 +161,11 @@ export function ClassSchedule() {
       {/* Legend */}
       <div className="mt-6 flex flex-wrap gap-4 px-2">
         <span className="text-sm font-medium text-slate-500 mr-2">Legend:</span>
-        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-blue-100 border border-blue-300"></div><span className="text-sm text-slate-600">Math</span></div>
-        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-purple-100 border border-purple-300"></div><span className="text-sm text-slate-600">Science</span></div>
-        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-emerald-100 border border-emerald-300"></div><span className="text-sm text-slate-600">Language</span></div>
-        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-amber-100 border border-amber-300"></div><span className="text-sm text-slate-600">Humanities</span></div>
-        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-teal-100 border border-teal-300"></div><span className="text-sm text-slate-600">Technology</span></div>
-        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-rose-100 border border-rose-300"></div><span className="text-sm text-slate-600">Arts / PE</span></div>
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-[#7c3aed]/15 border border-[#7c3aed]/30 border-l-[#7c3aed] border-l-2"></div><span className="text-sm text-slate-600">Math</span></div>
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-[#059669]/15 border border-[#059669]/30 border-l-[#059669] border-l-2"></div><span className="text-sm text-slate-600">Science</span></div>
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-[#f59e0b]/15 border border-[#f59e0b]/30 border-l-[#f59e0b] border-l-2"></div><span className="text-sm text-slate-600">Language</span></div>
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-[#dc2626]/15 border border-[#dc2626]/30 border-l-[#dc2626] border-l-2"></div><span className="text-sm text-slate-600">Humanities</span></div>
+        <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-[#0891b2]/15 border border-[#0891b2]/30 border-l-[#0891b2] border-l-2"></div><span className="text-sm text-slate-600">Arts / PE</span></div>
       </div>
     </AppLayout>
   );

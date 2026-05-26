@@ -32,15 +32,15 @@ export function AdminDashboard() {
     <AppLayout pageTitle="Admin Dashboard">
       {/* Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <MetricCard title="Total Students" value="1,248" change="+12 this month" icon={<Users className="text-blue-500" />} />
-        <MetricCard title="Total Teachers" value="84" change="Fully staffed" icon={<GraduationCap className="text-indigo-500" />} />
-        <MetricCard title="Attendance Today" value="97.2%" change="-0.3% from avg" icon={<Clock className="text-amber-500" />} />
-        <MetricCard title="School GPA Avg" value="3.42" change="+0.1 since last term" icon={<TrendingUp className="text-emerald-500" />} />
+        <MetricCard title="Total Students" value="1,248" change="+12 this month" icon={<Users className="text-[#7c3aed]" />} />
+        <MetricCard title="Total Teachers" value="84" change="Fully staffed" icon={<GraduationCap className="text-[#059669]" />} />
+        <MetricCard title="Attendance Today" value="97.2%" change="-0.3% from avg" icon={<Clock className="text-[#f59e0b]" />} />
+        <MetricCard title="School GPA Avg" value="3.42" change="+0.1 since last term" icon={<TrendingUp className="text-[#059669]" />} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Chart */}
-        <Card className="lg:col-span-2 border-slate-200 shadow-sm">
+        <Card className="lg:col-span-2 border-[#ede9fe] shadow-sm">
           <CardHeader>
             <CardTitle className="text-lg font-semibold text-slate-800">Weekly Attendance Trend</CardTitle>
           </CardHeader>
@@ -48,6 +48,12 @@ export function AdminDashboard() {
             <div className="h-[300px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={attendanceData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                  <defs>
+                    <linearGradient id="colorRate" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#7c3aed" stopOpacity={0.2}/>
+                      <stop offset="95%" stopColor="#7c3aed" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                   <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} dy={10} />
                   <YAxis domain={[90, 100]} axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} dx={-10} />
@@ -55,7 +61,7 @@ export function AdminDashboard() {
                     contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                     itemStyle={{ color: '#0f172a', fontWeight: 600 }}
                   />
-                  <Line type="monotone" dataKey="rate" stroke="#0d9488" strokeWidth={3} dot={{ r: 4, fill: '#0d9488', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 6 }} />
+                  <Line type="monotone" dataKey="rate" stroke="#7c3aed" strokeWidth={3} dot={{ r: 4, fill: '#7c3aed', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 6 }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -63,7 +69,7 @@ export function AdminDashboard() {
         </Card>
 
         {/* Upcoming Events */}
-        <Card className="border-slate-200 shadow-sm">
+        <Card className="border-[#ede9fe] shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-lg font-semibold text-slate-800">Upcoming</CardTitle>
             <Calendar className="h-5 w-5 text-slate-400" />
@@ -72,8 +78,8 @@ export function AdminDashboard() {
             {upcomingEvents.map(event => (
               <div key={event.id} className="flex gap-4 p-3 rounded-lg border border-slate-100 bg-slate-50">
                 <div className={`w-2 rounded-full ${
-                  event.type === 'meeting' ? 'bg-blue-500' : 
-                  event.type === 'exam' ? 'bg-amber-500' : 'bg-emerald-500'
+                  event.type === 'meeting' ? 'bg-[#7c3aed]' : 
+                  event.type === 'exam' ? 'bg-[#f59e0b]' : 'bg-[#059669]'
                 }`} />
                 <div>
                   <h4 className="font-medium text-sm text-slate-800">{event.title}</h4>
@@ -81,7 +87,7 @@ export function AdminDashboard() {
                 </div>
               </div>
             ))}
-            <Button variant="outline" className="w-full mt-2 text-[#0d9488] border-[#0d9488]/20 hover:bg-[#0d9488]/5">
+            <Button variant="outline" className="w-full mt-2 text-[#7c3aed] border-[#7c3aed]/20 hover:bg-[#7c3aed]/5">
               View Calendar
             </Button>
           </CardContent>
@@ -90,20 +96,20 @@ export function AdminDashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Recent Enrollments */}
-        <Card className="lg:col-span-2 border-slate-200 shadow-sm">
+        <Card className="lg:col-span-2 border-[#ede9fe] shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-lg font-semibold text-slate-800">Recent Enrollments</CardTitle>
-            <Button variant="ghost" size="sm" className="text-[#0d9488]">View All</Button>
+            <Button variant="ghost" size="sm" className="text-[#7c3aed]">View All</Button>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left">
-                <thead className="text-xs text-slate-500 bg-slate-50 uppercase border-b border-slate-100">
+                <thead className="text-xs text-[#4c1d95] bg-[#f5f3ff] uppercase border-b border-slate-100 font-semibold">
                   <tr>
-                    <th className="px-4 py-3 font-medium rounded-tl-lg">Student</th>
-                    <th className="px-4 py-3 font-medium">Class</th>
-                    <th className="px-4 py-3 font-medium">Date</th>
-                    <th className="px-4 py-3 font-medium rounded-tr-lg">Status</th>
+                    <th className="px-4 py-3 rounded-tl-lg">Student</th>
+                    <th className="px-4 py-3">Class</th>
+                    <th className="px-4 py-3">Date</th>
+                    <th className="px-4 py-3 rounded-tr-lg">Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -112,7 +118,7 @@ export function AdminDashboard() {
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-3">
                           <Avatar className="h-8 w-8">
-                            <AvatarFallback className="bg-[#1e2a4a] text-white text-xs">{student.avatar}</AvatarFallback>
+                            <AvatarFallback className="bg-[#12082e] text-white text-xs">{student.avatar}</AvatarFallback>
                           </Avatar>
                           <span className="font-medium text-slate-800">{student.name}</span>
                         </div>
@@ -137,22 +143,22 @@ export function AdminDashboard() {
         </Card>
 
         {/* Quick Actions */}
-        <Card className="border-slate-200 shadow-sm">
+        <Card className="border-[#ede9fe] shadow-sm">
           <CardHeader>
             <CardTitle className="text-lg font-semibold text-slate-800">Quick Actions</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Button className="w-full justify-start bg-[#1e2a4a] hover:bg-[#1e2a4a]/90 text-white">
+            <Button className="w-full justify-start bg-[#7c3aed] hover:bg-[#6d28d9] text-white">
               <Users className="mr-2 h-4 w-4" /> Add New Student
             </Button>
-            <Button variant="outline" className="w-full justify-start">
-              <AlertCircle className="mr-2 h-4 w-4 text-amber-500" /> Send Emergency Alert
+            <Button variant="outline" className="w-full justify-start text-[#7c3aed] border-[#7c3aed]">
+              <AlertCircle className="mr-2 h-4 w-4 text-[#f59e0b]" /> Send Emergency Alert
             </Button>
-            <Button variant="outline" className="w-full justify-start">
-              <Calendar className="mr-2 h-4 w-4 text-blue-500" /> Create Event
+            <Button variant="outline" className="w-full justify-start text-[#7c3aed] border-[#7c3aed]">
+              <Calendar className="mr-2 h-4 w-4 text-[#7c3aed]" /> Create Event
             </Button>
-            <Button variant="outline" className="w-full justify-start">
-              <GraduationCap className="mr-2 h-4 w-4 text-indigo-500" /> Generate Reports
+            <Button variant="outline" className="w-full justify-start text-[#7c3aed] border-[#7c3aed]">
+              <GraduationCap className="mr-2 h-4 w-4 text-[#7c3aed]" /> Generate Reports
             </Button>
           </CardContent>
         </Card>
@@ -163,7 +169,7 @@ export function AdminDashboard() {
 
 function MetricCard({ title, value, change, icon }: { title: string, value: string, change: string, icon: React.ReactNode }) {
   return (
-    <Card className="border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+    <Card className="border-[#ede9fe] shadow-sm hover:shadow-md transition-shadow">
       <CardContent className="p-6">
         <div className="flex justify-between items-start">
           <div>
