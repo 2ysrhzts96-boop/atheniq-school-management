@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Atheniq School Management"
+version = "1.0.0"
+id = "artifacts/atheniq"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24051
+
+[services.development]
+run = "pnpm --filter @workspace/atheniq run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/atheniq", "run", "build" ]
+publicDir = "artifacts/atheniq/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24051"
+BASE_PATH = "/"
